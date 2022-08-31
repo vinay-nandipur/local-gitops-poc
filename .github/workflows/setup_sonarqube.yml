@@ -42,4 +42,4 @@ jobs:
       - name: Configure PR Branch Name
         run: echo "$PR_BRANCH" > $HOME/.pr_branch_name
       - name: Setup Sonarqube
-        run: bash ./scripts/setup-sonarqube.sh "kind-local-cluster"
+        run: bash ./scripts/setup-sonarqube.sh "docker-desktop"
