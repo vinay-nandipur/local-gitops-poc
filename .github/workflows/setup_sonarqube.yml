@@ -1,0 +1,45 @@
+# This is a basic workflow to setup sonarqube
+
+name: setup_sonarqube
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  PR_BRANCH: ${{ github.event.pull_request.head.ref }}
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  setup_sonarqube:
+    # The type of runner that the job will run on
+    runs-on: [local-kubernetes-setup, self-hosted]
+
+    permissions:
+      id-token: write
+      pull-requests: write
+      contents: read
+
+    name: Setup Sonarqube
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+      - name: Configure GH CLI
+        run: bash ./scripts/install_configure_gh_cli.sh
+      - name: Setup Kube Cluster & Pre-Reqs
+        run: bash ./scripts/setup_kube_cluster.sh
+      - name: Install|Update Flux
+        run: bash ./scripts/install_flux.sh
+      - name: Setup Flux
+        run: bash ./scripts/flux_setup.sh
+      - name: Configure PR Branch Name
+        run: echo "$PR_BRANCH" > $HOME/.pr_branch_name
+      - name: Setup Sonarqube
+        run: bash ./scripts/setup-sonarqube.sh "kind-local-cluster"
