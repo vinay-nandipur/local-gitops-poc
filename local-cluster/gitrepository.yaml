@@ -3,7 +3,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
 metadata:
   name: helm-chart-sonarqube
-  namespace: dpe-sonarqube
+  namespace: sonarqube
 spec:
   interval: 5m0s
   ref:
