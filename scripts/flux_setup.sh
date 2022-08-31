@@ -12,7 +12,7 @@ flux install
 } &> /dev/null 2>&1
 
 flux bootstrap github \
-    --context=kind-local-cluster \
+    --context=docker-desktop \
     --owner=${GITHUB_USER} \
     --repository=${GITHUB_REPO} \
     --branch=main \
