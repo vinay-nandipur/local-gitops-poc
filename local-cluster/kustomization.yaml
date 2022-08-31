@@ -3,5 +3,6 @@ kind: Kustomization
 resources:
 - serviceaccount.yaml
 - metrics-server-components.yaml
+- ingress-controller.yaml
 - gitrepository.yaml
 - helmrelease.yaml
