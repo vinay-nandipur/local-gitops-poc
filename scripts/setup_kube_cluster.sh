@@ -77,6 +77,7 @@ kubectl config use-context docker-desktop
 kubectl taint nodes --all node-role.kubernetes.io/master-
 kubectl taint nodes --all node-role.kubernetes.io/control-plane-
 kubectl create namespace sonarqube
+kubectl create namespace identity
 
 
-kubectl config set contexts.$(kubectl config current-context).namespace sonarqube
+# kubectl config set contexts.$(kubectl config current-context).namespace sonarqube
