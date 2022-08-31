@@ -7,5 +7,4 @@ resources:
 - sonarqube-gitrepository.yaml
 - sonarqube-helmrelease.yaml
 - openldap-serviceaccount.yaml
-- openldap-gitrepository.yaml
 - openldap-helmrelease.yaml

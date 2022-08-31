@@ -5,15 +5,11 @@ metadata:
   name: openldap-local-helmrelease
   namespace: identity
 spec:
-  chart:
-    spec:
-      chart: openldap-stack-ha
-      reconcileStrategy: ChartVersion
-      sourceRef:
-        kind: GitRepository
-        name: helm-chart-openldap
-  interval: 5m0s
   values:
+    image:
+      repository: osixia/openldap
+      tag: 1.5.0
+      pullPolicy: IfNotPresent
     ingress:
       enabled: true
       annotations:
